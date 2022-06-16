@@ -52,7 +52,7 @@ class Cyclist2(Actor):
         self._segments[0].set_velocity(velocity)
     
     def _prepare_body(self):
-        x = int(constants.MAX_X / 2)
+        x = int(constants.MAX_X * 0.66)
         y = int(constants.MAX_Y / 2)
 
         for i in range(constants.SNAKE_LENGTH):
