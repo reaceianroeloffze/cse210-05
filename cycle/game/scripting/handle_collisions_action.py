@@ -36,15 +36,15 @@ class HandleCollisionsAction(Action):
         Args:
             cast (Cast): The cast of Actors in the game.
         """
-        score = cast.get_first_actor("scores")
+        score1 = cast.get_first_actor("scores1")
         food = cast.get_first_actor("foods")
-        snake = cast.get_first_actor("snakes")
-        head = snake.get_head()
+        cyclist1 = cast.get_first_actor("cyclist1")
+        head = cyclist1.get_head()
 
         if head.get_position().equals(food.get_position()):
             points = food.get_points()
-            snake.grow_tail(points)
-            score.add_points(points)
+            cyclist1.grow_tail(points)
+            score1.add_points(points)
             food.reset()
     
     def _handle_segment_collision(self, cast):
@@ -72,7 +72,7 @@ class HandleCollisionsAction(Action):
             cyclist2 = cast.get_first_actor("cyclist2")
             segments1 = cyclist1.get_segments()
             segments2 = cyclist2.get_segments()
-            #food = cast.get_first_actor("foods")
+            food = cast.get_first_actor("foods")
 
             x = int(constants.MAX_X / 2)
             y = int(constants.MAX_Y / 2)
@@ -87,4 +87,4 @@ class HandleCollisionsAction(Action):
                 segment1.set_color(constants.WHITE)
             for segment2 in segments2:
                 segment2.set_color(constants.WHITE)
-            #food.set_color(constants.WHITE)
+            food.set_color(constants.WHITE)
