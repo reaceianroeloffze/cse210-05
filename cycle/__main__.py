@@ -3,7 +3,8 @@ import constants
 from game.casting.cast import Cast
 from game.casting.food import Food
 from game.casting.score import Score
-from game.casting.snake import Snake
+from game.casting.cyclist1 import Cyclist1
+from game.casting.cyclist2 import Cyclist2
 from game.scripting.script import Script
 from game.scripting.control_actors_action import ControlActorsAction
 from game.scripting.move_actors_action import MoveActorsAction
@@ -20,9 +21,12 @@ def main():
     
     # create the cast
     cast = Cast()
-    cast.add_actor("foods", Food())
-    cast.add_actor("snakes", Snake())
-    cast.add_actor("scores", Score())
+    ##cast.add_actor("foods", Food())
+    #cast.add_actor("snakes", Snake())
+    cast.add_actor("cyclist1", Cyclist1())
+    cast.add_actor("cyclist2", Cyclist2())
+    cast.add_actor("scores1", Score())
+    cast.add_actor("scores2", Score())
    
     # start the game
     keyboard_service = KeyboardService()
