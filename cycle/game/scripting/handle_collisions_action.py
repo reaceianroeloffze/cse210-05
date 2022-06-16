@@ -68,9 +68,11 @@ class HandleCollisionsAction(Action):
             cast (Cast): The cast of Actors in the game.
         """
         if self._is_game_over:
-            snake = cast.get_first_actor("snakes")
-            segments = snake.get_segments()
-            food = cast.get_first_actor("foods")
+            cyclist1 = cast.get_first_actor("cyclist1")
+            cyclist2 = cast.get_first_actor("cyclist2")
+            segments1 = cyclist1.get_segments()
+            segments2 = cyclist2.get_segments()
+            #food = cast.get_first_actor("foods")
 
             x = int(constants.MAX_X / 2)
             y = int(constants.MAX_Y / 2)
@@ -81,6 +83,8 @@ class HandleCollisionsAction(Action):
             message.set_position(position)
             cast.add_actor("messages", message)
 
-            for segment in segments:
-                segment.set_color(constants.WHITE)
-            food.set_color(constants.WHITE)
+            for segment1 in segments1:
+                segment1.set_color(constants.WHITE)
+            for segment2 in segments2:
+                segment2.set_color(constants.WHITE)
+            #food.set_color(constants.WHITE)
