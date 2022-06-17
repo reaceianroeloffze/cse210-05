@@ -1,4 +1,5 @@
 import constants
+from cycle.game.casting.cyclist1 import Cyclist1
 from game.scripting.action import Action
 from game.shared.point import Point
 
@@ -45,5 +46,7 @@ class ControlActorsAction(Action):
         if self._keyboard_service.is_key_down('s'):
             self._direction = Point(0, constants.CELL_SIZE)
         
-        snake = cast.get_first_actor("snakes")
-        snake.turn_head(self._direction)
+        cyclist_1 = cast.get_first_actor("snakes")
+        cyclist_2 = cast.get_first_actor("snakes")
+        cyclist_1.turn_head(self._direction)
+        cyclist_2.turn_head(self._direction)
