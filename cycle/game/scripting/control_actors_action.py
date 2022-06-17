@@ -46,7 +46,7 @@ class ControlActorsAction(Action):
         if self._keyboard_service.is_key_down('s') or self._keyboard_service.is_key_down('k'):
             self._direction = Point(0, constants.CELL_SIZE)
         
-        cyclist_1 = cast.get_first_actor("snakes")
-        cyclist_2 = cast.get_first_actor("snakes")
+        cyclist_1 = cast.get_first_actor("cyclists_1")
+        cyclist_2 = cast.get_first_actor("cyclists_2")
         cyclist_1.turn_head(self._direction)
         cyclist_2.turn_head(self._direction)
