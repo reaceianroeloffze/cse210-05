@@ -36,26 +36,32 @@ class HandleCollisionsAction(Action):
         Args:
             cast (Cast): The cast of Actors in the game.
         """
-        score1 = cast.get_first_actor("scores1")
-        score2 = cast.get_first_actor("scores2")
+        #score1 = cast.get_first_actor("scores1")
+        #score2 = cast.get_first_actor("scores2")
+        score = cast.get_first_actor("scores")
         food = cast.get_first_actor("foods")
-        cycle1 = cast.get_actors("cycle1")
-        cycle2 = cast.get_actors("cycle2")
-
-
+        #cycle1 = cast.get_actors("cycle1")
+        #cycle2 = cast.get_actors("cycle2")
         if not self._is_game_over:
-            cycle1 = cycle1
-            cycle2 = cycle2
+            cycle1 = cycles[0]
+            cycle2 = cycles[1]
         head1 = cycle1.get_segments()[0]
         head2 = cycle2.get_segments()[0]
 
+
+        #if not self._is_game_over:
+        #    cycle1 = cycle1
+        #    cycle2 = cycle2
+        #head1 = cycle1.get_segments()[0]
+        #head2 = cycle2.get_segments()[0]
+
         if head1.get_position().equals(food.get_position()):
             points = food.get_points()
-            score1.add_points(points)
+            score.add_points(points)
             food.reset()
         elif head2.get_position().equals(food.get_position()):
             points = food.get_points()
-            score2.add_points(points)
+            score.add_points(points)
             food.reset()
 
     
@@ -65,12 +71,21 @@ class HandleCollisionsAction(Action):
         Args:
             cast (Cast): The cast of Actors in the game.
         """
-        cycle1 = cast.get_first_actor("cycle1")
-        cycle2 = cast.get_first_actor("cycle2")
+        #cycle1 = cast.get_first_actor("cycle1")
+        #cycle2 = cast.get_first_actor("cycle2")
+        cycles = cast.get_actors("cycles")
+        cycle1 = cycles[0]
         head1 = cycle1.get_segments()[0]
-        head2 = cycle2.get_segments()[0]
         segments1 = cycle1.get_segments()[1:]
+
+        cycle2 = cycles[1]
+        head2 = cycle2.get_segments()[0]
         segments2 = cycle2.get_segments()[1:]
+
+        #head1 = cycle1.get_segments()[0]
+        #head2 = cycle2.get_segments()[0]
+        #segments1 = cycle1.get_segments()[1:]
+        #segments2 = cycle2.get_segments()[1:]
         
         for segment in segments1:
            if head1.get_position().equals(segment.get_position()):
@@ -93,10 +108,17 @@ class HandleCollisionsAction(Action):
             cast (Cast): The cast of Actors in the game.
         """
         if self._is_game_over:
-            cyclist1 = cast.get_first_actor("cyclist1")
-            cyclist2 = cast.get_first_actor("cyclist2")
-            segments1 = cyclist1.get_segments()
-            segments2 = cyclist2.get_segments()
+            #cyclist1 = cast.get_first_actor("cyclist1")
+            #cyclist2 = cast.get_first_actor("cyclist2")
+            cycles = cast.get_actors("cycles")
+            cycle1 = cycles[0]
+            segments1 = cycle1.get_segments()
+
+            cycle2 = cycles[1]
+            segments2 = cycle2.get_segments()
+
+            #segments1 = cyclist1.get_segments()
+            #segments2 = cyclist2.get_segments()
             food = cast.get_first_actor("foods")
 
             x = int(constants.MAX_X / 2)
@@ -113,3 +135,6 @@ class HandleCollisionsAction(Action):
             for segment in segments2:
                 segment.set_color(constants.WHITE)
             food.set_color(constants.WHITE)
+            
+    def get_is_game_over(self):
+        return self._is_game_over
