@@ -21,7 +21,8 @@ class ControlActorsAction(Action):
         """
         self._keyboard_service = keyboard_service
         self._direction1 = Point(constants.CELL_SIZE, 0)
-        self._direction2 = Point(constants.CELL_SIZE, 0)
+        self._direction2 = Point(0, -1 * constants.CELL_SIZE)
+        self._is_game_over = False
 
     def execute(self, cast, script):
         """Executes the control actors action.
@@ -46,8 +47,10 @@ class ControlActorsAction(Action):
         if self._keyboard_service.is_key_down('s'):
             self._direction1 = Point(0, constants.CELL_SIZE)
         
-        cyclist1 = cast.get_actors("cyclist1")
-        cyclist1.turn_head(self._direction1)
+        #cyclist1 = cast.get_actors("cyclist1")
+        #cyclist1.turn_head(self._direction1)
+        cycle1 = cycles[0]
+        cycle1.turn_head(self._direction1)
 
         # left
         if self._keyboard_service.is_key_down('j'):
@@ -65,5 +68,10 @@ class ControlActorsAction(Action):
         if self._keyboard_service.is_key_down('k'):
             self._direction2 = Point(0, constants.CELL_SIZE)
 
-        cyclist2 = cast.get_actors("cyclist2")
-        cyclist2.turn_head(self._direction2)
+        #cyclist2 = cast.get_actors("cyclist2")
+        #cyclist2.turn_head(self._direction2)
+        cycle2 = cycles[1]
+        cycle2.turn_head(self._direction2)
+
+    def set_is_game_over(self, is_game_over):
+        self._is_game_over = is_game_over
