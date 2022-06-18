@@ -31,6 +31,9 @@ class ControlActorsAction(Action):
             cast (Cast): The cast of Actors in the game.
             script (Script): The script of Actions in the game.
         """
+
+        cycles = cast.get_actors("cycles")
+
         # left
         if self._keyboard_service.is_key_down('a'):
             self._direction1 = Point(-constants.CELL_SIZE, 0)

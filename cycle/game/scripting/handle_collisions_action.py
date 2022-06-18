@@ -42,6 +42,7 @@ class HandleCollisionsAction(Action):
         food = cast.get_first_actor("foods")
         #cycle1 = cast.get_actors("cycle1")
         #cycle2 = cast.get_actors("cycle2")
+        cycles = cast.get_actors("cycles")
         if not self._is_game_over:
             cycle1 = cycles[0]
             cycle2 = cycles[1]
@@ -135,6 +136,6 @@ class HandleCollisionsAction(Action):
             for segment in segments2:
                 segment.set_color(constants.WHITE)
             food.set_color(constants.WHITE)
-            
+
     def get_is_game_over(self):
         return self._is_game_over
