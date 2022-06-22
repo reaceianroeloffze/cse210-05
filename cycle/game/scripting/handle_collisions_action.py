@@ -89,9 +89,9 @@ class HandleCollisionsAction(Action):
                     self._is_game_over = True
 
         for segment in segments2:
-            points = cycle2.get_points()
+            points2 = cycle2.get_points()
             if head2.get_position().equals(segment.get_position()):
-                score1.add_points(points)
+                score1.add_points(points2)
                 self._is_game_over = True
             for segment in segments1:
                 if head2.get_position().equals(segment.get_position()):
