@@ -64,18 +64,19 @@ class HandleCollisionsAction(Action):
         """
         cycles = cast.get_actors("cycles")
         cycle1 = cycles[0]
+        cycle2 = cycles[1]
+
+        if not self._is_game_over:
+            cycle1.grow_trail(1)
+            cycle2.grow_trail(1)
+
         head1 = cycle1.get_segments()[0]
         segments1 = cycle1.get_segments()[1:]
         score1, score2 = cast.get_actors("scores")
 
-        cycle2 = cycles[1]
         head2 = cycle2.get_segments()[0]
         segments2 = cycle2.get_segments()[1:]
-        
-        if not self._is_game_over:
-            cycle1.grow_trail(1)
-            cycle2.grow_trail(1)
-        
+                
         for segment in segments1:
             points = cycle2.get_points()
             if head1.get_position().equals(segment.get_position()):

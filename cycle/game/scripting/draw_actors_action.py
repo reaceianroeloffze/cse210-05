@@ -18,6 +18,7 @@ class DrawActorsAction(Action):
             video_service (VideoService): An instance of VideoService.
         """
         self._video_service = video_service
+        
 
     def execute(self, cast, script):
         """Executes the draw actors action.
@@ -31,6 +32,9 @@ class DrawActorsAction(Action):
         cycles = cast.get_actors("cycles")
         cycle1 = cycles[0]
         cycle2 = cycles[1]
+        #if not is_game_over:
+        #    cycle1.grow_trail(1)
+        #    cycle2.grow_trail(1)
         segments1 = cycle1.get_segments()
         segments2 = cycle2.get_segments()
         messages = cast.get_actors("messages")
