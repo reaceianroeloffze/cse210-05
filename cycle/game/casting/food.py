@@ -6,7 +6,7 @@ from game.shared.point import Point
 
 class Food(Actor):
     """
-    A tasty item that snakes like to eat.
+    A tasty item that Cyclists like to eat.
     
     The responsibility of Food is to select a random position and points that it's worth.
 
