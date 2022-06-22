@@ -18,6 +18,7 @@ class HandleCollisionsAction(Action):
     def __init__(self):
         """Constructs a new HandleCollisionsAction."""
         self._is_game_over = False
+        self._points = 0
 
     def execute(self, cast, script):
         """Executes the handle collisions action.
@@ -88,6 +89,7 @@ class HandleCollisionsAction(Action):
                     self._is_game_over = True
 
         for segment in segments2:
+            points = cycle2.get_points()
             if head2.get_position().equals(segment.get_position()):
                 score1.add_points(points)
                 self._is_game_over = True
@@ -97,7 +99,7 @@ class HandleCollisionsAction(Action):
                     self._is_game_over = True
 
     def _handle_game_over(self, cast):
-        """Shows the 'game over' message and turns the snake and food white if the game is over.
+        """Shows the 'game over' message and turns the Cyclist and food white if the game is over.
         
         Args:
             cast (Cast): The cast of Actors in the game.
