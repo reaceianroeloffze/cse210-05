@@ -1,3 +1,4 @@
+#from itertools import cycle
 import constants
 from game.casting.actor import Actor
 from game.scripting.action import Action
@@ -79,6 +80,8 @@ class HandleCollisionsAction(Action):
         head1 = cycle1.get_segments()[0]
         segments1 = cycle1.get_segments()[1:]
 
+        score = cast.get_first_actor("scores")
+
         cycle2 = cycles[1]
         head2 = cycle2.get_segments()[0]
         segments2 = cycle2.get_segments()[1:]
@@ -89,17 +92,22 @@ class HandleCollisionsAction(Action):
         #segments2 = cycle2.get_segments()[1:]
         
         for segment in segments1:
-           if head1.get_position().equals(segment.get_position()):
-               self._is_game_over = True
-           for segment in segments2:
-               if head1.get_position().equals(segment.get_position()):
-                   self._is_game_over = True
+            points = cycle2.get_points()
+            if head1.get_position().equals(segment.get_position()):
+                score.add_points(points)
+                self._is_game_over = True
+            for segment in segments2:
+                if head1.get_position().equals(segment.get_position()):
+                    score.add_points(points)
+                    self._is_game_over = True
 
         for segment in segments2:
             if head2.get_position().equals(segment.get_position()):
+                score.add_points(points)
                 self._is_game_over = True
             for segment in segments1:
                 if head2.get_position().equals(segment.get_position()):
+                    score.add_points(points)
                     self._is_game_over = True
 
     def _handle_game_over(self, cast):

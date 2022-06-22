@@ -19,7 +19,7 @@ class DrawActorsAction(Action):
         """
         self._video_service = video_service
 
-    def execute(self, cast,  is_game_over, script):
+    def execute(self, cast,  is_game_over,):
         """Executes the draw actors action.
 
         Args:

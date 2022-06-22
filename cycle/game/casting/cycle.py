@@ -16,6 +16,7 @@ class Cycle(Actor):
         self._cycle_color = color
         self._segments = []
         self._prepare_body()
+        self._points = 0
 
     def get_segments(self):
         return self._segments
@@ -79,3 +80,11 @@ class Cycle(Actor):
             segment.set_text(text)
             segment.set_color(self._cycle_color)
             self._segments.append(segment)
+
+    def get_points(self):
+        """Gets the points
+        
+        Returns:
+            points (int): The points
+        """
+        return self._points
