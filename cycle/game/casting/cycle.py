@@ -57,10 +57,10 @@ class Cycle(Actor):
         y = 0.0
 
         if (self._cycle_color == constants.RED):
-            x = int(30)
+            x = int(150)
             y = int(constants.MAX_Y / 2)
         else:
-            x = int(-30)
+            x = int(-150)
             y = int(constants.MAX_Y / 2)
             
             
