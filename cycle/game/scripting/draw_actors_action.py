@@ -19,27 +19,18 @@ class DrawActorsAction(Action):
         """
         self._video_service = video_service
 
-    def execute(self, cast,  is_game_over,):
+    def execute(self, cast):
         """Executes the draw actors action.
 
         Args:
             cast (Cast): The cast of Actors in the game.
             script (Script): The script of Actions in the game.
         """
-        #score1 = cast.get_actors("scores1")
-        #score2 = cast.get_actors("scores2")
         score1, score2 = cast.get_actors("scores")
         food = cast.get_first_actor("foods")
-        #cyclist1 = cast.get_actors("cyclist1")
-        #cyclist2 = cast.get_actors("cyclist2")
         cycles = cast.get_actors("cycles")
         cycle1 = cycles[0]
         cycle2 = cycles[1]
-        if not is_game_over:
-            cycle1.grow_trail(1)
-            cycle2.grow_trail(1)
-        #segments1 = cyclist1.get_segments()
-        #segments2 = cyclist2.get_segments()
         segments1 = cycle1.get_segments()
         segments2 = cycle2.get_segments()
         messages = cast.get_actors("messages")

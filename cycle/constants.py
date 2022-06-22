@@ -4,8 +4,8 @@ from game.shared.color import Color
 COLUMNS = 40
 ROWS = 20
 CELL_SIZE = 15
-MAX_X = 900
-MAX_Y = 600
+MAX_X = 1500
+MAX_Y = 1000
 FRAME_RATE = 15
 FONT_SIZE = 15
 CAPTION = "Cycle"
